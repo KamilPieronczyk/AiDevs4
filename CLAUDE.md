@@ -34,9 +34,37 @@ from shared.verify import verify
 verify(task="nazwa-zadania", answer="odpowiedź")
 ```
 
+## Zarządzanie promptami
+
+Prompty trzymaj w plikach `.md` w katalogu lekcji z frontmatter YAML:
+
+```markdown
+---
+model: gpt-4o-mini
+system: Jesteś pomocnym asystentem.
+---
+Treść promptu z opcjonalnymi zmiennymi {{zmienna}}.
+```
+
+Pola frontmatter:
+- `model` – wersja modelu (wymagane)
+- `system` – system prompt (opcjonalne)
+
+Użycie w `solution.py`:
+```python
+from shared.prompts import run_prompt, load_prompt
+
+# wywołanie i odpowiedź od razu
+answer = run_prompt("prompt.md", variables={"zmienna": "wartość"})
+
+# samo wczytanie (post.content, post["model"], post["system"])
+post = load_prompt("prompt.md")
+```
+
 ## Zależności
 
 Instaluj przez `pip install -r requirements.txt`. Główne paczki:
 - `openai` – klient OpenAI/OpenRouter
 - `python-dotenv` – ładowanie .env
 - `requests` – HTTP calls
+- `python-frontmatter` – parsowanie frontmatter w promptach

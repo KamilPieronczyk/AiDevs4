@@ -1,9 +1,8 @@
 import sys
 sys.path.append("../..")
 
+from shared.prompts import run_prompt
 from shared.verify import verify
-from shared.ai import chat
 
-# TODO: rozwiąż zadanie i wywołaj verify
-answer = chat("Twoje pytanie do modelu")
+answer = run_prompt("prompt.md", variables={"question": "Ile to 2+2?"})
 verify(task="nazwa-zadania", answer=answer)

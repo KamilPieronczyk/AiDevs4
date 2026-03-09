@@ -37,9 +37,37 @@ verify(task="task-name", answer="answer")
 Endpoint: `POST https://hub.ag3nts.org/verify`
 Payload: `{"apikey": AIDEVS_API_KEY, "task": task, "answer": answer}`
 
+## Prompt Management
+
+Store prompts as `.md` files in the lesson directory using YAML frontmatter:
+
+```markdown
+---
+model: gpt-4o-mini
+system: You are a helpful assistant.
+---
+Prompt body with optional {{variable}} placeholders.
+```
+
+Frontmatter fields:
+- `model` – model version (required)
+- `system` – system prompt (optional)
+
+Usage in `solution.py`:
+```python
+from shared.prompts import run_prompt, load_prompt
+
+# run and get response directly
+answer = run_prompt("prompt.md", variables={"variable": "value"})
+
+# just load (post.content, post["model"], post["system"])
+post = load_prompt("prompt.md")
+```
+
 ## Dependencies
 
 See `requirements.txt`. Key packages:
 - `openai` – OpenAI/OpenRouter client
 - `python-dotenv` – .env loading
 - `requests` – HTTP calls
+- `python-frontmatter` – frontmatter parsing for prompt files
