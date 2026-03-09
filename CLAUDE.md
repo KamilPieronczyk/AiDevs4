@@ -53,10 +53,23 @@ p = load_prompt("prompt.md")
 # p.model, p.content
 ```
 
-## Zależności
+## Zależności i uruchamianie
 
-Instaluj przez `pip install -r requirements.txt`. Główne paczki:
+Używaj venv — nigdy systemowego Pythona:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Skrypty uruchamiaj zawsze z rootu repozytorium (import `shared/` i ścieżki do plików zakładają root jako CWD):
+```bash
+python S01/S01E01/solution.py
+```
+
+Główne paczki:
 - `openai` – klient OpenAI/OpenRouter
 - `python-dotenv` – ładowanie .env
 - `requests` – HTTP calls
 - `python-frontmatter` – parsowanie frontmatter w promptach
+- `loguru` – logi (preferowane nad print)

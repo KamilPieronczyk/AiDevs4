@@ -56,10 +56,23 @@ p = load_prompt("prompt.md")
 # p.model, p.content
 ```
 
-## Dependencies
+## Dependencies and Running
 
-See `requirements.txt`. Key packages:
+Always use a venv — never the system Python:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Always run scripts from the repository root (`shared/` imports and file paths assume root as CWD):
+```bash
+python S01/S01E01/solution.py
+```
+
+Key packages:
 - `openai` – OpenAI/OpenRouter client
 - `python-dotenv` – .env loading
 - `requests` – HTTP calls
 - `python-frontmatter` – frontmatter parsing for prompt files
+- `loguru` – logging (preferred over print)

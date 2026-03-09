@@ -22,14 +22,19 @@ AiDevs4/
 ```bash
 cp .env.example .env
 # uzupełnij klucze w .env
+
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
 ## Uruchamianie lekcji
 
+Zawsze z rootu repozytorium (ścieżki do plików i import `shared/` zakładają root jako CWD):
+
 ```bash
-cd S01/S01E01
-python solution.py
+source .venv/bin/activate
+python S01/S01E01/solution.py
 ```
 
 ## Styl kodu

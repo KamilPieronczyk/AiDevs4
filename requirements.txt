@@ -1,4 +1,5 @@
-openai>=1.0.0
+openai>=2.26.0
 python-dotenv>=1.0.0
 requests>=2.31.0
 python-frontmatter>=1.1.0
+loguru>=0.7.0
