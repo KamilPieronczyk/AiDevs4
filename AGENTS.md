@@ -44,24 +44,16 @@ Store prompts as `.md` files in the lesson directory using YAML frontmatter:
 ```markdown
 ---
 model: gpt-4o-mini
-system: You are a helpful assistant.
 ---
-Prompt body with optional {{variable}} placeholders.
+Prompt body.
 ```
 
-Frontmatter fields:
-- `model` – model version (required)
-- `system` – system prompt (optional)
-
-Usage in `solution.py`:
+Loading returns `Prompt(model, content)`:
 ```python
-from shared.prompts import run_prompt, load_prompt
+from shared.prompts import load_prompt
 
-# run and get response directly
-answer = run_prompt("prompt.md", variables={"variable": "value"})
-
-# just load (post.content, post["model"], post["system"])
-post = load_prompt("prompt.md")
+p = load_prompt("prompt.md")
+# p.model, p.content
 ```
 
 ## Dependencies

@@ -41,24 +41,16 @@ Prompty trzymaj w plikach `.md` w katalogu lekcji z frontmatter YAML:
 ```markdown
 ---
 model: gpt-4o-mini
-system: Jesteś pomocnym asystentem.
 ---
-Treść promptu z opcjonalnymi zmiennymi {{zmienna}}.
+Treść promptu.
 ```
 
-Pola frontmatter:
-- `model` – wersja modelu (wymagane)
-- `system` – system prompt (opcjonalne)
-
-Użycie w `solution.py`:
+Wczytanie zwraca `Prompt(model, content)`:
 ```python
-from shared.prompts import run_prompt, load_prompt
+from shared.prompts import load_prompt
 
-# wywołanie i odpowiedź od razu
-answer = run_prompt("prompt.md", variables={"zmienna": "wartość"})
-
-# samo wczytanie (post.content, post["model"], post["system"])
-post = load_prompt("prompt.md")
+p = load_prompt("prompt.md")
+# p.model, p.content
 ```
 
 ## Zależności
