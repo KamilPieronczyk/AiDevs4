@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "openai-api": {
+      "source": "diskd-ai/openai-api",
+      "sourceType": "github",
+      "computedHash": "6daa4f95534fe3d34faf9c5ded26c939fd7e124c6821aeb1a892c3561a8ee4a4"
+    },
     "openai-docs": {
       "source": "openai/skills",
       "sourceType": "github",
