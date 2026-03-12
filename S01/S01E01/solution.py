@@ -1,5 +1,6 @@
 import sys
 import csv
+import json
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
 from pydantic import BaseModel
@@ -96,6 +97,11 @@ def main():
     print(f"Transport workers: {len(answer)}")
     for a in answer:
         print(a)
+
+    # Save suspects for S01E02
+    with open("S01/S01E01/suspects.json", "w", encoding="utf-8") as f:
+        json.dump(answer, f, ensure_ascii=False, indent=2)
+    print("Suspects saved to S01/S01E01/suspects.json")
 
     verify(task="people", answer=answer)
 
